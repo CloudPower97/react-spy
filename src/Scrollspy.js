@@ -40,6 +40,7 @@ export default class Scrollspy extends Component {
 
   getElements = () => {
     const { items } = this.props
+    const { pathname } = window.location
 
     this.setState(
       {
@@ -47,8 +48,8 @@ export default class Scrollspy extends Component {
         navItems: items
           .map(
             item =>
-              document.querySelector(`[href="#${item}"]`) ||
-              document.querySelector(`[href="/#${item}"]`)
+              document.querySelector(`[href="${pathname}#${item}"]`) ||
+              document.querySelector(`[href="${pathname}/#${item}"]`)
           )
           .filter(item => item),
       },
