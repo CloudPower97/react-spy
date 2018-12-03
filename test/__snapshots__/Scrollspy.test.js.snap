@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scollspy should render 1`] = `
+<ul>
+  <li>
+    <a
+      href="#first-section"
+    >
+      First Section
+    </a>
+  </li>
+  <li>
+    <a
+      href="#second-section"
+    >
+      Second Section
+    </a>
+  </li>
+</ul>
+`;
