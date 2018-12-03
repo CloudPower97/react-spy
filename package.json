@@ -5,12 +5,12 @@
   "main": "./lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
-    "pretest": "npm run fix",
+    "pretest": "run-s pretty fix",
     "test": "jest --env=jsdom",
     "prebuild": "run-s clean lint pretty",
     "build": "babel -d lib src",
     "build:watch": "babel -d lib src --watch",
-    "lint": "eslint src/**/**/*.js",
+    "lint": "eslint src/**/*.js",
     "fix": "eslint src/**/*.js --fix",
     "pretty": "prettier --write src/**/**/*.js"
   },
