@@ -39,12 +39,14 @@ export default class Scrollspy extends Component {
 
     this.setState(
       {
-        elementsToSpy: items.map(item => document.getElementById(item)),
-        navItems: items.map(
-          item =>
-            document.querySelector(`[href="#${item}"]`) ||
-            document.querySelector(`[href="/#${item}"]`)
-        ),
+        elementsToSpy: items.map(item => document.getElementById(item)).filter(item => item),
+        navItems: items
+          .map(
+            item =>
+              document.querySelector(`[href="#${item}"]`) ||
+              document.querySelector(`[href="/#${item}"]`)
+          )
+          .filter(item => item),
       },
       () => {
         this.createIntersectionObserver()
@@ -53,14 +55,10 @@ export default class Scrollspy extends Component {
   }
 
   createMutationObserver = () => {
-    const { items } = this.props
-
     new MutationObserver((mutations, observer) => {
-      if (items.every(item => document.getElementById(item))) {
-        this.getElements()
+      this.getElements()
 
-        observer.disconnect()
-      }
+      observer.disconnect()
     }).observe(document.body, {
       childList: true,
       subtree: true,
@@ -71,20 +69,18 @@ export default class Scrollspy extends Component {
     const { elementsToSpy, navItems } = this.state
     const { options, intersectionRatio: ratio } = this.props
 
-    if (navItems.every(navItem => navItem)) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(({ isIntersecting, intersectionRatio, target }) => {
-          if (isIntersecting && intersectionRatio > ratio) {
-            this.removeActiveClass()
-            this.addActiveClass(navItems.find(navItem => navItem.href.includes(target.id)))
-          }
-        })
-      }, options)
-
-      elementsToSpy.forEach(elem => {
-        observer.observe(elem)
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(({ isIntersecting, intersectionRatio, target }) => {
+        if (isIntersecting && intersectionRatio > ratio) {
+          this.removeActiveClass()
+          this.addActiveClass(navItems.find(navItem => navItem.href.includes(target.id)))
+        }
       })
-    }
+    }, options)
+
+    elementsToSpy.forEach(elem => {
+      observer.observe(elem)
+    })
   }
 
   addActiveClass = el => {
@@ -97,10 +93,8 @@ export default class Scrollspy extends Component {
     const { navItems } = this.state
     const { activeClass } = this.props
 
-    if (navItems.every(navItem => navItem)) {
-      const active = navItems.find(navItem => navItem.classList.contains(activeClass))
-      active && active.classList.remove(activeClass)
-    }
+    const active = navItems.find(navItem => navItem.classList.contains(activeClass))
+    active && active.classList.remove(activeClass)
   }
 
   render() {
