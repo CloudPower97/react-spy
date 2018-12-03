@@ -40,7 +40,11 @@ export default class Scrollspy extends Component {
     this.setState(
       {
         elementsToSpy: items.map(item => document.getElementById(item)),
-        navItems: items.map(item => document.querySelector(`[href="#${item}"]`)),
+        navItems: items.map(
+          item =>
+            document.querySelector(`[href="#${item}"]`) ||
+            document.querySelector(`[href="/#${item}"]`)
+        ),
       },
       () => {
         this.createIntersectionObserver()
@@ -67,18 +71,20 @@ export default class Scrollspy extends Component {
     const { elementsToSpy, navItems } = this.state
     const { options, intersectionRatio: ratio } = this.props
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(({ isIntersecting, intersectionRatio, target }) => {
-        if (isIntersecting && intersectionRatio > ratio) {
-          this.removeActiveClass()
-          this.addActiveClass(navItems.find(navItem => navItem.href.includes(target.id)))
-        }
-      })
-    }, options)
+    if (navItems.every(navItem => navItem)) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(({ isIntersecting, intersectionRatio, target }) => {
+          if (isIntersecting && intersectionRatio > ratio) {
+            this.removeActiveClass()
+            this.addActiveClass(navItems.find(navItem => navItem.href.includes(target.id)))
+          }
+        })
+      }, options)
 
-    elementsToSpy.forEach(elem => {
-      observer.observe(elem)
-    })
+      elementsToSpy.forEach(elem => {
+        observer.observe(elem)
+      })
+    }
   }
 
   addActiveClass = el => {
@@ -91,8 +97,10 @@ export default class Scrollspy extends Component {
     const { navItems } = this.state
     const { activeClass } = this.props
 
-    const active = navItems.find(navItem => navItem.classList.contains(activeClass))
-    active && active.classList.remove(activeClass)
+    if (navItems.every(navItem => navItem)) {
+      const active = navItems.find(navItem => navItem.classList.contains(activeClass))
+      active && active.classList.remove(activeClass)
+    }
   }
 
   render() {
