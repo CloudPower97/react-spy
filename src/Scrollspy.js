@@ -4,9 +4,13 @@ import PropTypes from 'prop-types'
 export default class Scrollspy extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    /** Id list of target contents. */
     items: PropTypes.arrayOf(PropTypes.string).isRequired,
+    /** Class name to toggle when one of the items enters the viewport. */
     activeClass: PropTypes.string.isRequired,
+    /** A number between 0.0 and 1.0 which indicates how much of the target element is actually visible within the root's intersection rectangle. */
     intersectionRatio: PropTypes.number.isRequired,
+    /** Intersection observer options */
     options: PropTypes.shape({
       root: PropTypes.node,
       rootMargin: PropTypes.string.isRequired,
