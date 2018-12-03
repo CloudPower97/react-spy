@@ -97,8 +97,10 @@ export default class Scrollspy extends Component {
     const { navItems } = this.state
     const { activeClass } = this.props
 
-    const active = navItems.find(navItem => navItem.classList.contains(activeClass))
-    active && active.classList.remove(activeClass)
+    if (navItems) {
+      const active = navItems.find(navItem => navItem.classList.contains(activeClass))
+      active && active.classList.remove(activeClass)
+    }
   }
 
   render() {
