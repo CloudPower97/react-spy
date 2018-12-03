@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/CloudPower97/react-spy/compare/v1.2.0...v1.2.1) (2018-12-03)
+
+
+### Bug Fixes
+
+* add support for subdirectory served app ([53e8140](https://github.com/CloudPower97/react-spy/commit/53e8140)), closes [#10](https://github.com/CloudPower97/react-spy/issues/10)
+
+
+
 # [1.2.0](https://github.com/CloudPower97/react-spy/compare/v1.1.1...v1.2.0) (2018-12-03)
 
 
