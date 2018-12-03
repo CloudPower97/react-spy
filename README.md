@@ -1,4 +1,4 @@
-# Educabile Website
+# React Spy
 
 [![GitHub contributors](https://img.shields.io/github/contributors/CloudPower97/react-spy.svg)](https://GitHub.com/CloudPower97/react-spy/graphs/contributors/)
 [![made-for-react](https://img.shields.io/badge/Made%20for-React-1f425f.svg)](https://reactjs.org/)
