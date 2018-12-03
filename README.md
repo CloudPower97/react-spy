@@ -1,18 +1,21 @@
 # React Spy
 
-[![GitHub contributors](https://img.shields.io/github/contributors/CloudPower97/react-spy.svg)](https://GitHub.com/CloudPower97/react-spy/graphs/contributors/)
-[![made-for-react](https://img.shields.io/badge/Made%20for-React-1f425f.svg)](https://reactjs.org/)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub contributors](https://img.shields.io/github/contributors/CloudPower97/react-spy.svg?style=for-the-badge)](https://GitHub.com/CloudPower97/react-spy/graphs/contributors/)
+[![made-for-react](https://img.shields.io/badge/Made%20for-React-1f425f.svg?style=for-the-badge)](https://reactjs.org/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/release/CloudPower97/react-spy.svg?style=for-the-badge)](https://GitHub.com/CloudPower97/react-spy/releases/)
 
 ## Table of Contents
 
 1. [Overview](#Overview)
-2. [Usage](#Usage)
-3. [Contributing](#Contributing)
-   - [Linters](#Linters)
-   - [Testing](#Testing)
-   - [Commit Guidelines](#Commit-Guidelines)
+2. [Install](#Install)
+3. [Usage](#Usage)
+4. [Contributing](#Contributing)
+   - [Development](#Development)
+     - [Linters](#Linters)
+     - [Testing](#Testing)
+     - [Commit Guidelines](#Commit-Guidelines)
 
 ---
 
@@ -33,31 +36,43 @@ The difference here is that _React Spy_ does make internally uses of the [`Mutat
 
 ---
 
+## Install
+
+`npm i @cloudpower97/react-spy`
+
+or
+
+`yarn add @cloudpower97/react-spy`
+
+---
+
 ## Usage
 
 ```javascript
-import Scrollspy from 'react-spy'
+import Scrollspy from '@cloudpower97/react-spy'
 
 <header>
-  <Scrollspy items={['section-1', 'section-2', 'section-3']}
-    activeClass='current'
-    options={{
-      rootMargin: '56px 0px 0px 0px',
-      threshold: 0.5,
-    }}
-    intersectionRatio={0.375}>
-    <ul>
-      <li>
-        <a href="#section-1">section 1</a>
-      </li>
-      <li>
-        <a href="#section-2">section 2</a>
-      </li>
-      <li>
-        <a href="#section-3">section 3</a>
-      </li>
-    </ul>
-  </Scrollspy>
+  <nav>
+    <Scrollspy items={['section-1', 'section-2', 'section-3']}
+      activeClass='current'
+      options={{
+        rootMargin: '56px 0px 0px 0px',
+        threshold: 0.5,
+      }}
+      intersectionRatio={0.375}>
+      <ul>
+        <li>
+          <a href="#section-1">section 1</a>
+        </li>
+        <li>
+          <a href="#section-2">section 2</a>
+        </li>
+        <li>
+          <a href="#section-3">section 3</a>
+        </li>
+      </ul>
+    </Scrollspy>
+  </nav>
 </header>
 
 ...
@@ -88,7 +103,27 @@ import Scrollspy from 'react-spy'
 
 Pull requests and [reporting an issue](https://github.com/CloudPower97/react-spy/issues) are always welcome :D
 
-### Linters
+### Development
+
+Fork and clone the repo:
+
+`git clone git@github.com:your-username/react-spy.git`
+
+Create a branch for the feature/fix:
+
+`git checkout -b feat:new-great-idea`
+
+Add tests and make them pass:
+
+`npm run test`
+
+or
+
+`yarn test`
+
+Push to your fork and submit a pull request.
+
+#### Linters
 
 <div>
 <img src="https://prettier.io/icon.png" alt="Prettier" width="128">
@@ -97,7 +132,7 @@ Pull requests and [reporting an issue](https://github.com/CloudPower97/react-spy
 
 To enforce a consistent style across the entire project we are using [`Prettier`](https://prettier.io/).
 
-We are also using [`ESLint`](https://eslint.org/) to catch bugs and syntax errors during development and [`stylelint`](https://stylelint.io/) for CSS linting.
+We are also using [`ESLint`](https://eslint.org/) to catch bugs and syntax errors during development.
 
 We run `Prettier` and `ESLint` before each commit thanks to [`Husky`](https://github.com/typicode/husky), so that you can focus on what matter the most : writing code.
 
@@ -111,19 +146,21 @@ It will bother you only for changes it can't fix.
 
 All of the above assure us that our code base is always consistent with the rules we are using and bug free as much as possible.
 
-### Testing
+#### Testing
 
 <img src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/940/square_256/jestlogo.png" alt="Jest" width="128"/>
 
 We are using [`Jest`](https://github.com/facebook/jest) and [`Enzyme`](https://github.com/airbnb/enzyme) to test our components.
 
-### Commit Guidelines
+#### Commit Guidelines
 
 We follow the [Angular Commit Guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits).
 
 Refer to their documentation for more information.
 
 Note: If you DON'T follow the [Angular Commit Guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits) you will not be able to commit your changes.
+
+---
 
 ## Intersection Observer
 
